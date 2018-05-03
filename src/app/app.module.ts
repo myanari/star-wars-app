@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ListComponent } from './list/list.component';
 import { ItemComponent } from './item/item.component';
+import {ForceIconComponent} from './item/force-icon/force-icon.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ItemComponent } from './item/item.component';
     AppComponent,
     TabsComponent,
     ListComponent,
-    ItemComponent
+    ItemComponent,
+    ForceIconComponent
   ],
   imports: [
     BrowserModule
