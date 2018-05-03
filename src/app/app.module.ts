@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ListComponent } from './list/list.component';
 import { ItemComponent } from './item/item.component';
-import {ForceIconComponent} from './item/force-icon/force-icon.component';
+import {ChooseSideComponent} from './item/choose-side/choose-side.component';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import {ForceIconComponent} from './item/force-icon/force-icon.component';
     TabsComponent,
     ListComponent,
     ItemComponent,
-    ForceIconComponent
+    ChooseSideComponent
   ],
   imports: [
     BrowserModule
