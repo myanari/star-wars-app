@@ -1,7 +1,19 @@
 <div class="tabs is-centered">
   <ul>
-    <li class="is-active"><a>All</a></li>
-    <li><a>Light</a></li>
-    <li><a>Dark</a></li>
+    <li class="is-active">
+      <a (click)="onChoose('all')" style="cursor: pointer">All</a>
+    </li>
+    <li>
+      <a (click)="onChoose('light')" style="cursor: pointer">Light</a>
+    </li>
+    <li>
+      <a (click)="onChoose('dark')" style="cursor: pointer">Dark</a>
+    </li>
   </ul>
+</div>
+
+<div class="columns has-text-centered is-centered" style="margin-top: 20px">
+  <div class="column is-half">
+    <app-list [characters]="getCharacters()"></app-list>
+  </div>
 </div>
