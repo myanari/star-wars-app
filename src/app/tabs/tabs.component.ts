@@ -34,7 +34,6 @@ export class TabsComponent implements OnInit {
     { name: 'obiwan-kenobi', side: '' },
     { name: 'poe-dameron', side: '' },
     { name: 'princess-leia', side: '' },
-    { name: 'pyth', side: '' },
     { name: 'qui-gon-jinn', side: '' },
     { name: 'r2d2', side: '' },
     { name: 'red-five', side: '' },

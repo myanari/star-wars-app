@@ -9,7 +9,15 @@ export class ItemComponent implements OnInit {
   @Input() char;
 
   path = '';
-  name = ''; // luke skywalker
+  name = '';
+
+  makeUser() {
+    const names = this.name.split(' ');
+    if (names.length === 1 && names[0] !== 'bb8' && names[0] !== 'c3p0') {
+      names.push(Math.floor(Math.random() * 100).toString());
+    }
+    return names.join('');
+  }
 
   constructor() { }
 
