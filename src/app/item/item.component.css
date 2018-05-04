@@ -17,3 +17,14 @@ button.light-side {
 .card-footer-item {
   padding: .40rem;
 }
+
+.media-left {
+  padding-right: .5rem;
+}
+
+img {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+}
