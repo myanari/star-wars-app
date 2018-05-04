@@ -14,7 +14,7 @@ export class ItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.path = './assets/' + this.char.name.toLowerCase() + '.svg';
+    this.path = './assets/characters/' + this.char.name.toLowerCase() + '.svg';
     this.name = this.char.name.split('-').join(' ');
   }
 }
