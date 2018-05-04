@@ -3,12 +3,12 @@
     <div class="media">
       <div class="media-left">
         <figure class="image is-128x128">
-          <img [src]="srcImg" [alt]="name">
+          <img src="{{ path }}" [alt]="char.name">
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-3">{{ name }}</p>
-        <p class="subtitle is-4">@{{ name.split(' ').join('').toLowerCase() }}</p>
+        <p style="text-transform: capitalize" class="title is-3">{{ name }}</p>
+        <p class="subtitle is-4">@{{ name.split(' ').join('') }}</p>
       </div>
     </div>
   </div>

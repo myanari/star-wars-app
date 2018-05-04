@@ -6,11 +6,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
-  @Input() name;
-  @Input() srcImg;
-  character;
+  @Input() char;
+
+  path = '';
+  name = ''; // luke skywalker
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.path = './assets/' + this.char.name.toLowerCase() + '.svg';
+    this.name = this.char.name.split('-').join(' ');
+  }
 }

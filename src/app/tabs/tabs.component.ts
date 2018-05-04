@@ -7,10 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsComponent implements OnInit {
   characters = [
-    { name: 'Luke Skywalker', side: '' },
-    { name: 'Rey', side: '' },
-    { name: 'Darth Vader', side: '' },
-    { name: 'Kylo Ren', side: '' },
+    { name: 'yoda', side: '' },
+    { name: 'darth-vader', side: '' },
   ];
 
   chosenTab = 'all';
@@ -22,11 +20,12 @@ export class TabsComponent implements OnInit {
 
   onChoose(side) {
     this.chosenTab = side;
+    console.log(this.chosenTab);
   }
 
   getCharacters() {
     if (this.chosenTab === 'all') {
-      return this.chosenTab.slice();
+      return this.characters.slice();
     }
 
     return this.characters.filter((char) => {

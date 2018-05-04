@@ -1,12 +1,12 @@
 <div class="tabs is-centered">
   <ul>
-    <li class="is-active">
+    <li [ngClass]="{'active': chosenTab === 'all'}">
       <a (click)="onChoose('all')" style="cursor: pointer">All</a>
     </li>
-    <li>
+    <li [ngClass]="{'active': chosenTab === 'light'}">
       <a (click)="onChoose('light')" style="cursor: pointer">Light</a>
     </li>
-    <li>
+    <li [ngClass]="{'active': chosenTab === 'dark'}">
       <a (click)="onChoose('dark')" style="cursor: pointer">Dark</a>
     </li>
   </ul>
