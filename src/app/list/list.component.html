@@ -1,3 +1,7 @@
 <div class="list">
-  <app-item *ngFor="let char of characters" [char]="char"></app-item>
+  <app-item
+    *ngFor="let char of characters; let i = index;"
+    [char]="char"
+    [order]="i">
+  </app-item>
 </div>
