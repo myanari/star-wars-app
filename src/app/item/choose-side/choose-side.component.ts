@@ -11,4 +11,6 @@ export class ChooseSideComponent {
   getColorOfSide() {
     return this.side === 'light' ? 'cornflowerblue' : '#F44336';
   }
+
+  dVar = '';
 }
