@@ -26,4 +26,8 @@ export class ItemComponent implements OnInit {
     }
     this.user = names.join('');
   }
+
+  onAssign(side: string) {
+    this.char.side = side;
+  }
 }

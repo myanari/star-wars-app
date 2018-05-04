@@ -13,10 +13,10 @@
     </div>
   </div>
   <footer class="card-footer">
-    <button class="card-footer-item button is-focused light-side">
+    <button (click)="onAssign('light')" class="card-footer-item button light-side">
       <i class="fab fa-3x fa-rebel"></i>
     </button>
-    <button class="card-footer-item button is-focused dark-side">
+    <button (click)="onAssign('dark')" class="card-footer-item button dark-side">
       <i class="fab fa-3x fa-empire item"></i>
     </button>
   </footer>
