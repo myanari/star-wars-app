@@ -1,4 +1,9 @@
+import { Injectable } from '@angular/core';
+import { LoggerService } from './logger.service';
+
+@Injectable()
 export class StarWarsService {
+  private logService: LoggerService;
   private characters = [
     { name: 'admiral-ackbar', side: '' },
     { name: 'bb8', side: '' },
@@ -36,6 +41,10 @@ export class StarWarsService {
     { name: 'yoda', side: '' }
   ];
 
+  constructor(logService: LoggerService) {
+    this.logService = logService;
+  }
+
   getCharacters(chosenTab) {
     if (chosenTab === 'all') {
       return this.characters.slice();
@@ -46,10 +55,11 @@ export class StarWarsService {
     });
   }
 
-  onSideChosen(charSide) {
+  onSideChosen(charInfo) {
     const pos = this.characters.findIndex((char) => {
-      return char.name === charSide.name;
+      return char.name === charInfo.name;
     });
-    this.characters[pos].side = charSide.side;
+    this.characters[pos].side = charInfo.side;
+    this.logService.logChange(`Side of ${charInfo.name} changed! New side: ${charInfo.side}`);
   }
 }
