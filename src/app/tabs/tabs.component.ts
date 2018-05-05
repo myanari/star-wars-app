@@ -6,6 +6,7 @@ import { StarWarsService } from '../star-wars.service';
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.css']
 })
+
 export class TabsComponent implements OnInit {
   characters = [];
   chosenTab = 'all';

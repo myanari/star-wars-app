@@ -9,7 +9,8 @@ button.dark-side {
 }
 
 button.light-side {
-  background-color: #2196F3;
+  /*background-color: #2196F3;*/
+  background-color: #2F67F8;
   border-color: transparent;
   color: #fff;
 }
@@ -27,8 +28,4 @@ img {
   height: 128px;
   /*border-radius: 50%;*/
   /*object-fit: cover;*/
-}
-
-.card:hover {
-  box-shadow: 5px -1px 6px 0 rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
 }
