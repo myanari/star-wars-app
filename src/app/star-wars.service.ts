@@ -45,4 +45,11 @@ export class StarWarsService {
       return char.side === chosenTab;
     });
   }
+
+  onSideChosen(charSide) {
+    const pos = this.characters.findIndex((char) => {
+      return char.name === charSide.name;
+    });
+    this.characters[pos].side = charSide.side;
+  }
 }

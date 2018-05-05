@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { StarWarsService } from '../star-wars.service';
+
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
@@ -8,12 +10,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ItemComponent implements OnInit {
   @Input() char;
   @Output() sideAssigned = new EventEmitter<{name: string, side: string}>();
+  swService: StarWarsService;
 
   path = '';
   name = '';
   user = '';
 
-  constructor() { }
+  constructor(swService: StarWarsService) {
+    this.swService = swService;
+  }
 
   ngOnInit() {
     this.path = './assets/characters/' + this.char.name.toLowerCase() + '.svg';
@@ -27,7 +32,6 @@ export class ItemComponent implements OnInit {
   }
 
   onAssign(side: string) {
-    // this.char.side = side;
-    this.sideAssigned.emit({name: this.char.name, side: side});
+    this.swService.onSideChosen({name: this.char.name, side: side});
   }
 }

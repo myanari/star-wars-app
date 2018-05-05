@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -15,6 +16,5 @@ export class ListComponent implements OnInit {
   }
 
   onSideAssigned(charSide) {
-    this.charAssigned.emit(charSide);
   }
 }
