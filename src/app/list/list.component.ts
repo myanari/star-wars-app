@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 @Component({
@@ -8,13 +8,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ListComponent implements OnInit {
   @Input() characters;
-  @Output() charAssigned = new EventEmitter<{name: string, side: string}>();
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onSideAssigned(charSide) {
   }
 }

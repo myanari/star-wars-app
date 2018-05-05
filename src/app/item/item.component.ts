@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { StarWarsService } from '../star-wars.service';
 
@@ -9,7 +9,6 @@ import { StarWarsService } from '../star-wars.service';
 })
 export class ItemComponent implements OnInit {
   @Input() char;
-  @Output() sideAssigned = new EventEmitter<{name: string, side: string}>();
   swService: StarWarsService;
 
   path = '';
@@ -25,9 +24,11 @@ export class ItemComponent implements OnInit {
     this.name = this.char.name.split('-').join(' ');
 
     const names = this.name.split(' ');
+
     if (names.length === 1 && names[0] !== 'bb8' && names[0] !== 'c3p0' && names[0] !== 'r2d2') {
       names.push(Math.floor(Math.random() * 100).toString());
     }
+
     this.user = names.join('');
   }
 
