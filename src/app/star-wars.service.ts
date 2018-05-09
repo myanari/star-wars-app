@@ -4,7 +4,7 @@ import { LoggerService } from './logger.service';
 @Injectable()
 export class StarWarsService {
   private logService: LoggerService;
-  private characters = [
+  private possibleCharacters = [
     { name: 'admiral-ackbar', side: '' },
     { name: 'bb8', side: '' },
     { name: 'boba-fett', side: '' },
@@ -40,31 +40,45 @@ export class StarWarsService {
     { name: 'tusken-raider', side: '' },
     { name: 'yoda', side: '' }
   ];
+  private displayedCharacters = [
+    {name: 'c3p0', side: ''},
+    {name: 'han-solo', side: ''}
+  ];
 
   constructor(logService: LoggerService) {
     this.logService = logService;
   }
 
+  // The only function that touches possibleCharacters list
+  addCharacter(name, side) {
+    const formattedName = name.toLowerCase().split(' ').join('-');
+    // Chacking if character is valid (exists in possibleCharacters) or if it even exist
+    const charAlreadyDisplayed = this.displayedCharacters.findIndex(char => char.name === name);
+    if (charAlreadyDisplayed !== -1) {
+      this.logService.logChange(`Char ${name} is already being displayed`);
+      return;
+    }
+    const charIsValid = this.possibleCharacters.findIndex(char => char.name === formattedName);
+    if (charIsValid === -1) {
+      this.logService.logChange(`Couldn't find char ${name}, try another name`);
+      return;
+    }
+    const newChar = {name: formattedName, side: side};
+    this.displayedCharacters.push(newChar);
+  }
+
   getCharacters(chosenTab) {
     if (chosenTab === 'all') {
-      return this.characters.slice();
+      return this.displayedCharacters.slice();
     }
 
-    return this.characters.filter((char) => {
-      return char.side === chosenTab;
-    });
+    return this.displayedCharacters.filter((char) => char.side === chosenTab);
   }
 
   onSideChosen(charInfo) {
-    const pos = this.characters.findIndex((char) => {
-      return char.name === charInfo.name;
-    });
-    this.characters[pos].side = charInfo.side;
+    const pos = this.displayedCharacters.findIndex((char) => char.name === charInfo.name);
+    this.displayedCharacters[pos].side = charInfo.side;
     this.logService.logChange(`Side of ${charInfo.name} changed! New side: ${charInfo.side}`);
   }
 
-  addCharacter(name, side) {
-    const newChar = {name: name, side: side};
-    this.characters.push(newChar);
-  }
 }
