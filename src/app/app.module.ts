@@ -9,6 +9,7 @@ import { ItemComponent } from './item/item.component';
 import { StarWarsService } from './star-wars.service';
 import { LoggerService } from './logger.service';
 import { CreateCharacterComponent } from './create-character/create-character.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CreateCharacterComponent } from './create-character/create-character.co
     CreateCharacterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [StarWarsService, LoggerService],
   bootstrap: [AppComponent]
