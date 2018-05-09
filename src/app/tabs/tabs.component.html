@@ -12,8 +12,10 @@
   </ul>
 </div>
 
-<div class="columns has-text-centered is-centered" style="margin-top: 20px">
+<div class="columns has-text-centered is-centered">
   <div class="column is-half">
+    <ng-content></ng-content>
+    <hr>
     <app-list [characters]="getCharacters()"></app-list>
   </div>
 </div>

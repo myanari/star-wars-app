@@ -1,20 +1,17 @@
 <div class="field has-addons">
   <p class="control">
     <span class="select">
-      <label for="side">Choose Side</label>
-      <select name="side" id="side">
-        <option *ngFor="let side of availableSides" [value]="side.value">
-          {{ side.display }}
-        </option>
+      <select title="side" name="side" id="side" class="is-dark">
+        <option *ngFor="let option of availableSides" [value]="option.value">{{option.display}}</option>
       </select>
     </span>
   </p>
-  <p class="control">
-    <input class="input" type="text" placeholder="Character name" id="name" name="name">
+  <p class="control is-expanded">
+    <input class="input" id="name" name="name" type="text" placeholder="Add a character">
   </p>
   <p class="control">
-    <a class="button">
-      Add Character
-    </a>
+    <button class="button is-dark" type="submit">
+      Add character
+    </button>
   </p>
 </div>
