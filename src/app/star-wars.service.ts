@@ -53,7 +53,6 @@ export class StarWarsService {
     const formattedName = name.toLowerCase().split(' ').join('-');
     // Chacking if character is valid (exists in possibleCharacters) or if it even exist
     const charAlreadyDisplayed = this.displayedCharacters.findIndex(char => char.name === name);
-    console.log(charAlreadyDisplayed);
     if (charAlreadyDisplayed !== -1) {
       return;
     }

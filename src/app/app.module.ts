@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -12,6 +13,11 @@ import { CreateCharacterComponent } from './create-character/create-character.co
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 
+const routes = [
+  { path: 'characters', component: TabsComponent},
+  { path: 'new', component: CreateCharacterComponent },
+  { path: '**', redirectTo: '/'}
+];
 
 @NgModule({
   declarations: [
@@ -24,7 +30,8 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [StarWarsService, LoggerService],
   bootstrap: [AppComponent]
