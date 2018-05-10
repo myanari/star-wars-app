@@ -14,7 +14,10 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 
 const routes = [
-  { path: 'characters', component: TabsComponent},
+  { path: 'characters', component: TabsComponent, children: [
+      { path: '', redirectTo: 'all', pathMatch: 'full' },
+      { path: ':side', component: ListComponent }
+    ] },
   { path: 'new', component: CreateCharacterComponent },
   { path: '**', redirectTo: '/'}
 ];

@@ -29,13 +29,11 @@ export class CreateCharacterComponent implements OnInit {
     allChars.map((char) => {
       this.allCharacters.push(char);
     });
-    console.log(this.allCharacters);
   }
 
   onSubmit(submittedForm) {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
-    console.log(value);
     this.swService.addCharacter(value.name, value.side);
   }
 

@@ -2,17 +2,18 @@
   <div class="column is-half">
     <div class="tabs is-centered">
       <ul>
-        <li [ngClass]="{'is-active': chosenTab === 'all'}">
-          <a (click)="onChoose('all')" style="cursor: pointer">All</a>
+        <li routerLinkActive="is-active">
+          <a routerLink="/characters/all">All</a>
         </li>
-        <li [ngClass]="{'is-active': chosenTab === 'light'}">
-          <a (click)="onChoose('light')" style="cursor: pointer">Light</a>
+        <li routerLinkActive="is-active">
+          <a routerLink="/characters/light">Light</a>
         </li>
-        <li [ngClass]="{'is-active': chosenTab === 'dark'}">
-          <a (click)="onChoose('dark')" style="cursor: pointer">Dark</a>
+        <li routerLinkActive="is-active">
+          <a routerLink="/characters/dark">Dark</a>
         </li>
       </ul>
     </div>
-    <app-list [characters]="getCharacters()"></app-list>
+    <!--<app-list [characters]="getCharacters()"></app-list>-->
+    <router-outlet></router-outlet>
   </div>
 </div>
