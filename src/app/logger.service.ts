@@ -5,8 +5,4 @@ export class LoggerService {
   logChange(logText: string) {
     console.log(logText);
   }
-
-  logError(errorText: string) {
-    return errorText;
-  }
 }

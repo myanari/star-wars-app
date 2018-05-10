@@ -11,7 +11,7 @@ export class CreateCharacterComponent implements OnInit {
   swService: StarWarsService;
   loggerService: LoggerService;
   selectedSide = '';
-  addCharError;
+  allCharacters = [];
 
   availableSides = [
     {display: 'Choose Side', value: ''},
@@ -25,14 +25,18 @@ export class CreateCharacterComponent implements OnInit {
   }
 
   ngOnInit() {
+    const allChars = this.swService.getAllPossibleCharacters();
+    allChars.map((char) => {
+      this.allCharacters.push(char);
+    });
+    console.log(this.allCharacters);
   }
 
   onSubmit(submittedForm) {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
-    this.swService.addCharacter(value.name, value.side, (err) => {
-      this.addCharError = err;
-    });
+    console.log(value);
+    this.swService.addCharacter(value.name, value.side);
   }
 
   onChange(form) {

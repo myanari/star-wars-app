@@ -9,20 +9,24 @@
         </select>
       </span>
     </p>
-    <div class="control is-expanded">
-      <input
-        class="input"
-        id="name"
-        name="name"
-        type="text"
-        placeholder="Add a character"
-        ngModel
-        required
-        #nameCtrl="ngModel">
-      <p class="help is-danger"
-         *ngIf="nameCtrl.invalid && nameCtrl.touched">Please enter a name!</p>
-      <p class="help is-danger"
-         *ngIf="addCharError">{{ addCharError }}</p>
+    <div class="control is-expanded has-icons-left is-focused">
+      <span class="select is-fullwidth is-success">
+        <select title="side"
+                name="name"
+                id="name"
+                required
+                ngModel
+                #nameCtrl="ngModel">
+          <option value="" disabled selected hidden>Select character</option>
+          <option
+            style="direction: rtl"
+            *ngFor="let char of allCharacters"
+            [value]="char.name">{{ char.name }}</option>
+        </select>
+      </span>
+      <div class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </div>
     </div>
     <p class="control">
       <button

@@ -49,18 +49,12 @@ export class StarWarsService {
     this.logService = logService;
   }
 
-  addCharacter(name, side, callbackError) { // The only function that touches possibleCharacters list
+  addCharacter(name, side) { // The only function that touches possibleCharacters list
     const formattedName = name.toLowerCase().split(' ').join('-');
     // Chacking if character is valid (exists in possibleCharacters) or if it even exist
     const charAlreadyDisplayed = this.displayedCharacters.findIndex(char => char.name === name);
     console.log(charAlreadyDisplayed);
-    if (charAlreadyDisplayed === -1) {
-      callbackError(this.logService.logError(`Char ${name} is already being displayed`));
-      return;
-    }
-    const charIsValid = this.possibleCharacters.findIndex(char => char.name === formattedName);
-    if (charIsValid === -1) {
-      callbackError(this.logService.logError(`Couldn't find char ${name}, try another name`));
+    if (charAlreadyDisplayed !== -1) {
       return;
     }
     const newChar = {name: formattedName, side: side};
@@ -72,6 +66,10 @@ export class StarWarsService {
       return this.displayedCharacters.slice();
     }
     return this.displayedCharacters.filter((char) => char.side === chosenTab);
+  }
+
+  getAllPossibleCharacters() {
+    return this.possibleCharacters;
   }
 
   onSideChosen(charInfo) {
