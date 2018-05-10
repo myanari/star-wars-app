@@ -1,21 +1,18 @@
-<div class="tabs is-centered">
-  <ul>
-    <li [ngClass]="{'is-active': chosenTab === 'all'}">
-      <a (click)="onChoose('all')" style="cursor: pointer">All</a>
-    </li>
-    <li [ngClass]="{'is-active': chosenTab === 'light'}">
-      <a (click)="onChoose('light')" style="cursor: pointer">Light</a>
-    </li>
-    <li [ngClass]="{'is-active': chosenTab === 'dark'}">
-      <a (click)="onChoose('dark')" style="cursor: pointer">Dark</a>
-    </li>
-  </ul>
-</div>
-
 <div class="columns has-text-centered is-centered">
   <div class="column is-half">
-    <ng-content></ng-content>
-    <hr>
+    <div class="tabs is-centered">
+      <ul>
+        <li [ngClass]="{'is-active': chosenTab === 'all'}">
+          <a (click)="onChoose('all')" style="cursor: pointer">All</a>
+        </li>
+        <li [ngClass]="{'is-active': chosenTab === 'light'}">
+          <a (click)="onChoose('light')" style="cursor: pointer">Light</a>
+        </li>
+        <li [ngClass]="{'is-active': chosenTab === 'dark'}">
+          <a (click)="onChoose('dark')" style="cursor: pointer">Dark</a>
+        </li>
+      </ul>
+    </div>
     <app-list [characters]="getCharacters()"></app-list>
   </div>
 </div>
