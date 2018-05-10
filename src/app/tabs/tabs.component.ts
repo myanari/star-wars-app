@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StarWarsService } from '../star-wars.service';
 
 @Component({
   selector: 'app-tabs',
@@ -8,24 +7,10 @@ import { StarWarsService } from '../star-wars.service';
 })
 
 export class TabsComponent implements OnInit {
-  characters = [];
-  chosenTab = 'all';
-  swService: StarWarsService;
 
-  constructor(swService: StarWarsService) {
-    this.swService = swService;
+  constructor() {
   }
 
   ngOnInit() {
-  }
-
-  onChoose(side) {
-    this.chosenTab = side;
-    console.log(this.chosenTab);
-  }
-
-  getCharacters() {
-    this.characters = this.swService.getCharacters(this.chosenTab);
-    return this.characters;
   }
 }
