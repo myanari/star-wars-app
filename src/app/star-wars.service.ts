@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { LoggerService } from './logger.service';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class StarWarsService {
+  charactersChanged = new Subject<void>();
   private logService: LoggerService;
   private possibleCharacters = [
     { name: 'admiral-ackbar', side: '' },
@@ -74,6 +76,7 @@ export class StarWarsService {
   onSideChosen(charInfo) {
     const pos = this.displayedCharacters.findIndex((char) => char.name === charInfo.name);
     this.displayedCharacters[pos].side = charInfo.side;
+    this.charactersChanged.next();
     this.logService.logChange(`Side of ${charInfo.name} changed! New side: ${charInfo.side}`);
   }
 
