@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CompleterService, CompleterData } from 'ng2-completer';
 import { StarWarsService } from '../star-wars.service';
 import { LoggerService } from '../logger.service';
 
@@ -41,4 +42,7 @@ export class CreateCharacterComponent implements OnInit {
     this.selectedSide = form.value.side;
   }
 
+  onAddOwnCharacter() {
+
+  }
 }
