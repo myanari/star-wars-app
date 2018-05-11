@@ -12,6 +12,7 @@ export class CreateCharacterComponent implements OnInit {
   swService: StarWarsService;
   loggerService: LoggerService;
   selectedSide = '';
+  userWillAddOwnChar = false;
   allCharacters = [];
 
   availableSides = [
@@ -43,6 +44,7 @@ export class CreateCharacterComponent implements OnInit {
   }
 
   onAddOwnCharacter() {
-
+    this.userWillAddOwnChar = true;
+    this.swService.fetchCharacters();
   }
 }
