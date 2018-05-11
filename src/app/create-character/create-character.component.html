@@ -1,6 +1,6 @@
 <div class="columns has-text-centered is-centered">
   <div class="column is-half">
-    <form (ngSubmit)="onSubmit(form)" #form="ngForm" (change)="onChange(form)">
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm" (change)="selectedSide = form.value.side" *ngIf="!userWillAddOwnChar">
       <div class="field has-addons">
         <p class="control">
           <span class="select">
@@ -39,10 +39,13 @@
         </p>
       </div>
     </form>
-    <div class="is-divider" data-content="OR"></div>
+    <div *ngIf="!userWillAddOwnChar" class="is-divider" data-content="OR"></div>
     <div class="control">
-      <button class="button is-fullwidth is-dark" (click)="onAddOwnCharacter()">
-        Enter Your Own Character
+      <button
+        style="margin-bottom: 1.5rem"
+        class="button is-fullwidth is-dark"
+        (click)="userWillAddOwnChar = !userWillAddOwnChar">
+        {{ userWillAddOwnChar ? 'Enter predefined character' : 'Enter Your Own Character' }}
       </button>
       <app-user-defined-character *ngIf="userWillAddOwnChar"></app-user-defined-character>
     </div>

@@ -39,8 +39,4 @@ export class CreateCharacterComponent implements OnInit {
   onChange(form) {
     this.selectedSide = form.value.side;
   }
-
-  onAddOwnCharacter() {
-    this.userWillAddOwnChar = true;
-  }
 }
