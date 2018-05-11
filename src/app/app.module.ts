@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Ng2CompleterModule } from 'ng2-completer';
 
 
 import { AppComponent } from './app.component';
@@ -9,9 +11,8 @@ import { ListComponent } from './list/list.component';
 import { ItemComponent } from './item/item.component';
 import { StarWarsService } from './star-wars.service';
 import { LoggerService } from './logger.service';
-import { CreateCharacterComponent } from './create-character/create-character.component';
-import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
+import { CreateCharacterComponent } from './create-character/create-character.component';
 
 const routes = [
   { path: 'characters', component: TabsComponent, children: [
@@ -34,7 +35,8 @@ const routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    Ng2CompleterModule
   ],
   providers: [StarWarsService, LoggerService],
   bootstrap: [AppComponent]
