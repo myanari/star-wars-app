@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { LoggerService } from './logger.service';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class StarWarsService {
-  http: Http;
+  httpClient: HttpClient;
   charactersChanged = new Subject<void>();
   private logService: LoggerService;
   private possibleCharacters = [
@@ -49,9 +49,9 @@ export class StarWarsService {
     {name: 'han-solo', side: ''}
   ];
 
-  constructor(logService: LoggerService, http: Http) {
+  constructor(logService: LoggerService, httpClient: HttpClient) {
     this.logService = logService;
-    this.http = http;
+    this.httpClient = httpClient;
   }
 
   addCharacter(name, side) { // The only function that touches possibleCharacters list
@@ -66,7 +66,7 @@ export class StarWarsService {
   }
 
   fetchCharacters() {
-    this.http.get('https://swapi.co/api/people/').subscribe(
+    this.httpClient.get('https://swapi.co/api/people/').subscribe(
       (data) => { console.log(data); }
     );
   }
