@@ -41,7 +41,10 @@
     </form>
     <div class="is-divider" data-content="OR"></div>
     <div class="control">
-      <button class="button is-fullwidth is-dark" (click)="onAddOwnCharacter()">Enter Your Own Character</button>
+      <button class="button is-fullwidth is-dark" (click)="onAddOwnCharacter()">
+        Enter Your Own Character
+      </button>
+      <app-user-defined-character *ngIf="userWillAddOwnChar"></app-user-defined-character>
     </div>
   </div>
 </div>

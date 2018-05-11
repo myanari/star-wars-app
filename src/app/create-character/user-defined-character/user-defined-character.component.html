@@ -1,0 +1,14 @@
+<div class="field has-addons">
+  <p class="control">
+    <span class="select">
+      <select title="side" name="side" class="is-dark">
+        <option
+          *ngFor="let option of availableSides"
+          [value]="option.value">{{option.display}}</option>
+      </select>
+    </span>
+  </p>
+  <div class="control is-expanded">
+    <input class="input" type="text" title="userDefinedName">
+  </div>
+</div>

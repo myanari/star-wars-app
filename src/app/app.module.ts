@@ -14,6 +14,7 @@ import { StarWarsService } from './star-wars.service';
 import { LoggerService } from './logger.service';
 import { HeaderComponent } from './header/header.component';
 import { CreateCharacterComponent } from './create-character/create-character.component';
+import { UserDefinedCharacterComponent } from './create-character/user-defined-character/user-defined-character.component';
 
 const routes = [
   { path: 'characters', component: TabsComponent, children: [
@@ -31,7 +32,8 @@ const routes = [
     ListComponent,
     ItemComponent,
     CreateCharacterComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserDefinedCharacterComponent
   ],
   imports: [
     BrowserModule,
