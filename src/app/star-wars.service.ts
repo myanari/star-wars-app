@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { LoggerService } from './logger.service';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/operator/map';
 
 @Injectable()
 export class StarWarsService {
-  httpClient: HttpClient;
   charactersChanged = new Subject<void>();
   private logService: LoggerService;
   private usersOwnCharacters = [];
@@ -51,9 +49,18 @@ export class StarWarsService {
     {name: 'han-solo', side: ''}
   ];
 
-  constructor(logService: LoggerService, httpClient: HttpClient) {
+  availableSides = [
+    {display: 'Choose Side', value: ''},
+    {display: 'Light', value: 'light'},
+    {display: 'Dark', value: 'dark'}
+  ];
+
+  constructor(logService: LoggerService) {
     this.logService = logService;
-    this.httpClient = httpClient;
+  }
+
+  getSides() {
+    return this.availableSides;
   }
 
   addCharacter(name, side) { // The only function that touches possibleCharacters list
@@ -65,16 +72,6 @@ export class StarWarsService {
     }
     const newChar = {name: formattedName, side: side};
     this.displayedCharacters.push(newChar);
-  }
-
-  fetchCharacters() {
-    this.httpClient.get('https://swapi.co/api/people/').subscribe(
-      (data) => {
-        data.results.map(char => {
-          this.usersOwnCharacters.push({ name: char.name, side: '' });
-        });
-      }
-    );
   }
 
   getCharacters(chosenTab) {

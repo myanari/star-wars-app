@@ -6,7 +6,7 @@
           <span class="select">
             <select title="side" name="side" id="side" class="is-dark" ngModel>
               <option
-                *ngFor="let option of availableSides"
+                *ngFor="let option of getSides()"
                 [value]="option.value">{{option.display}}</option>
             </select>
           </span>

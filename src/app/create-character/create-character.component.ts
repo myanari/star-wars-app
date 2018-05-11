@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CompleterService, CompleterData } from 'ng2-completer';
 import { StarWarsService } from '../star-wars.service';
 import { LoggerService } from '../logger.service';
 
@@ -15,11 +14,9 @@ export class CreateCharacterComponent implements OnInit {
   userWillAddOwnChar = false;
   allCharacters = [];
 
-  availableSides = [
-    {display: 'Choose Side', value: ''},
-    {display: 'Light', value: 'light'},
-    {display: 'Dark', value: 'dark'}
-  ];
+  getSides() {
+    return this.swService.getSides();
+  }
 
   constructor(swService: StarWarsService, loggerService: LoggerService) {
     this.swService = swService;
@@ -45,6 +42,5 @@ export class CreateCharacterComponent implements OnInit {
 
   onAddOwnCharacter() {
     this.userWillAddOwnChar = true;
-    this.swService.fetchCharacters();
   }
 }

@@ -3,12 +3,15 @@
     <span class="select">
       <select title="side" name="side" class="is-dark">
         <option
-          *ngFor="let option of availableSides"
+          *ngFor="let option of sides"
           [value]="option.value">{{option.display}}</option>
       </select>
     </span>
   </p>
   <div class="control is-expanded">
-    <input class="input" type="text" title="userDefinedName">
+      <!-- [datasource]="getCharacters()" -->
+    <ng2-completer
+      inputClass="input"
+      [minSearchLength]="0"></ng2-completer>
   </div>
 </div>
