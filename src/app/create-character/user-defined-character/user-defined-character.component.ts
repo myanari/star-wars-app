@@ -4,8 +4,6 @@ import { CompleterService, CompleterData } from 'ng2-completer';
 
 import { StarWarsService } from '../../star-wars.service';
 import { Results, CharacterName } from './results.model';
-import { ImageService } from '../../image.service';
-
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -18,7 +16,6 @@ import 'rxjs/add/operator/map';
 export class UserDefinedCharacterComponent implements OnInit {
   swService: StarWarsService;
   httpClient: HttpClient;
-  imageService: ImageService;
   completerData: CompleterData;
   isImageRequired = true;
   selectedSide;
@@ -28,12 +25,10 @@ export class UserDefinedCharacterComponent implements OnInit {
   constructor(
     swService: StarWarsService,
     httpClient: HttpClient,
-    completerService: CompleterService,
-    imageService: ImageService
+    completerService: CompleterService
   ) {
     this.swService = swService;
     this.httpClient = httpClient;
-    this.imageService = imageService;
     this.completerData = completerService.local(this.chars, 'name', 'name');
   }
 

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Injectable } from '@angular/core';
 
 import { StarWarsService } from '../star-wars.service';
-import { ImageService } from '../image.service';
 
 @Component({
   selector: 'app-item',

@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2CompleterModule } from 'ng2-completer';
 
-import { ImageService } from './image.service';
 import { StarWarsService } from './star-wars.service';
 import { LoggerService } from './logger.service';
 
@@ -45,7 +44,7 @@ const routes = [
     RouterModule.forRoot(routes),
     Ng2CompleterModule
   ],
-  providers: [StarWarsService, LoggerService, ImageService],
+  providers: [StarWarsService, LoggerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
