@@ -35,6 +35,7 @@
         id="image"
         ngModel
         [required]="isImageRequired"
+        [disabled]="!isImageRequired"
         #imageCtrl="ngModel"
         placeholder="Paste a url for the character icon!">
     </span>

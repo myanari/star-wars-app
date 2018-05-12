@@ -15,6 +15,7 @@ export class ItemComponent implements OnInit {
   swService: StarWarsService;
   imageService: ImageService;
 
+  imgProvider;
   path = '';
   name = '';
   user = '';
@@ -32,6 +33,7 @@ export class ItemComponent implements OnInit {
     if (names.length === 1 && names[0] !== 'bb8' && names[0] !== 'c3p0' && names[0] !== 'r2d2') {
       names.push(Math.floor(Math.random() * 100).toString());
     }
+    this.imgProvider = this.imageService.imageProvider;
     this.user = names.join('');
     if (this.imageService.imageProvider === 'user') {
       if (this.imageService.photo === null) {
@@ -42,6 +44,7 @@ export class ItemComponent implements OnInit {
     } else {
       this.path = this.char.image;
     }
+    console.log(this.char.image, this.char.name);
   }
 
   onAssign(side: string) {

@@ -69,7 +69,6 @@ export class UserDefinedCharacterComponent implements OnInit {
     const value = submittedForm.value;
     this.swService.addCharacter(value.name, value.side, value.image);
     this.imageService.determineImageProvider('user');
-    console.log('inside onSubmit: ' + value.image);
     this.imageService.setUserEnteredPhoto(value.image);
   }
 }
