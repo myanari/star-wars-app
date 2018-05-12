@@ -37,7 +37,9 @@
         [required]="isImageRequired"
         [disabled]="!isImageRequired"
         #imageCtrl="ngModel"
-        placeholder="Paste a url for the character icon!">
+        [placeholder]="isImageRequired ?
+          'Paste a url for the character icon!' :
+          'I already have an icon for this character ;)'">
     </span>
   </div>
   <div class="control" style="margin-top: 1rem">
