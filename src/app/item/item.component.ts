@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Injectable } from '@angular/core';
 
 import { StarWarsService } from '../star-wars.service';
 
@@ -7,6 +7,8 @@ import { StarWarsService } from '../star-wars.service';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })
+
+@Injectable()
 export class ItemComponent implements OnInit {
   @Input() char;
   swService: StarWarsService;
@@ -21,6 +23,7 @@ export class ItemComponent implements OnInit {
 
   ngOnInit() {
     this.path = '/assets/characters/' + this.char.name.toLowerCase() + '.svg';
+
     this.name = this.char.name.split('-').join(' ');
 
     const names = this.name.split(' ');
@@ -30,13 +33,13 @@ export class ItemComponent implements OnInit {
     }
 
     this.user = names.join('');
+
+    this.swService.customImage.subscribe(image => {
+      this.path = image;
+    });
   }
 
   onAssign(side: string) {
     this.swService.onSideChosen({name: this.char.name, side: side});
-  }
-
-  onError() {
-    this.swService.isImageRequired.next();
   }
 }

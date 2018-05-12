@@ -1,6 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import { CompleterService, CompleterData } from 'ng2-completer';
 
 import { StarWarsService } from '../../star-wars.service';
@@ -36,10 +35,6 @@ export class UserDefinedCharacterComponent implements OnInit {
   ngOnInit() {
     this.sides = this.swService.getSides();
     this.fetchCharacters();
-    this.swService.isImageRequired.subscribe(() => {
-      this.isImageRequired = true;
-      console.log(this.isImageRequired);
-    });
   }
 
   fetchCharacters() {
@@ -71,5 +66,6 @@ export class UserDefinedCharacterComponent implements OnInit {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
     this.swService.addCharacter(value.name, value.side);
+    this.swService.customImage.next(value.image);
   }
 }
