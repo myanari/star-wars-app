@@ -54,8 +54,6 @@ export class UserDefinedCharacterComponent implements OnInit {
       (err) => {
         if (err.status === 200) {
           this.isImageRequired = false;
-          console.log(this.isImageRequired);
-          console.log('tem imagem aqui noserver');
         } else {
           this.isImageRequired = true;
         }
@@ -66,5 +64,9 @@ export class UserDefinedCharacterComponent implements OnInit {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
     this.swService.addCharacter(value.name, value.side, value.image);
+    if (this.isImageRequired) {
+      this.swService.imageNotInServer.next(value.image);
+      console.log('image required!');
+    }
   }
 }

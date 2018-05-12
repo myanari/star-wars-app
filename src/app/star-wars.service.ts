@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { LoggerService } from './logger.service';
 import { Subject } from 'rxjs/Subject';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class StarWarsService {
+  imageNotInServer = new BehaviorSubject<string>('');
   charactersChanged = new Subject<void>();
   private logService: LoggerService;
   private possibleCharacters = [

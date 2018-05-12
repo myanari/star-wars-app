@@ -22,8 +22,6 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.path = '/assets/characters/' + this.char.image + '.svg';
-
     this.name = this.char.name.split('-').join(' ');
 
     const names = this.name.split(' ');
@@ -33,9 +31,12 @@ export class ItemComponent implements OnInit {
     }
 
     this.user = names.join('');
+
+    this.path = `/assets/characters/${this.char.image}.svg`;
+
   }
 
   onAssign(side: string) {
-    this.swService.onSideChosen({ name: this.char.name, side: side, image: this.char.image });
+    this.swService.onSideChosen({ name: this.char.name, side: side, image: this.char.side });
   }
 }

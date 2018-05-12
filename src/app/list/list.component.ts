@@ -12,6 +12,7 @@ import { StarWarsService } from '../star-wars.service';
 export class ListComponent implements OnInit, OnDestroy {
   characters = [];
   loadedSide = 'all';
+  image;
   subscription;
   activatedRoute: ActivatedRoute;
   swService: StarWarsService;
@@ -31,10 +32,13 @@ export class ListComponent implements OnInit, OnDestroy {
     this.subscription = this.swService.charactersChanged.subscribe(
       () => {
         this.characters = this.swService.getCharacters(this.loadedSide);
+        this.image = `/assets/characters/${this.characters}`;
       }
     );
   }
   ngOnDestroy() {
+    console.log('from onDestroy');
     this.subscription.unsubscribe();
+    this.swService.imageNotInServer.unsubscribe();
   }
 }
