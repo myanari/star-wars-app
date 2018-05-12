@@ -91,5 +91,4 @@ export class StarWarsService {
     this.charactersChanged.next();
     this.logService.logChange(`Side of ${charInfo.name} changed! New side: ${charInfo.side}`);
   }
-
 }

@@ -9,6 +9,7 @@ import { StarWarsService } from '../../star-wars.service';
 export class PreDefinedCharacterComponent implements OnInit {
   swService: StarWarsService;
   selectedSide = '';
+  sides;
   allCharacters = [];
 
   constructor(swService: StarWarsService) {
@@ -16,14 +17,11 @@ export class PreDefinedCharacterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sides = this.swService.getSides();
     const allChars = this.swService.getAllPossibleCharacters();
     allChars.map((char) => {
       this.allCharacters.push(char);
     });
-  }
-
-  getSides() {
-    return this.swService.getSides();
   }
 
   onSubmit(submittedForm) {

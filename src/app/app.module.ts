@@ -23,7 +23,7 @@ const routes = [
       { path: ':side', component: ListComponent }
     ] },
   { path: 'new', component: CreateCharacterComponent },
-  { path: '**', redirectTo: '/'}
+  { path: '**', redirectTo: 'characters'}
 ];
 
 @NgModule({

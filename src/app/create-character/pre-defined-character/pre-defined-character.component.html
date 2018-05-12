@@ -4,7 +4,7 @@
       <span class="select">
         <select title="side" name="side" id="side" class="is-dark" ngModel>
           <option
-            *ngFor="let option of getSides()"
+            *ngFor="let option of sides"
             [value]="option.value">{{option.display}}</option>
         </select>
       </span>
@@ -12,11 +12,11 @@
     <div class="control is-expanded has-icons-left is-focused">
       <span class="select is-fullwidth is-success">
         <select title="name"
-                name="name"
-                id="name"
-                required
-                ngModel
-                #nameCtrl="ngModel">
+          name="name"
+          id="name"
+          required
+          ngModel
+          #nameCtrl="ngModel">
           <option value="" disabled selected hidden>Select character</option>
           <option
             style="direction: rtl"

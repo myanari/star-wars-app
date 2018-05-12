@@ -2,19 +2,36 @@
   <div class="field has-addons">
     <p class="control">
       <span class="select">
-        <select title="side" name="side" class="is-dark">
+        <select title="side" name="side" id="side" class="is-dark" ngModel>
           <option
             *ngFor="let option of sides"
             [value]="option.value">{{option.display}}</option>
         </select>
       </span>
     </p>
-    <div class="control is-expanded">
-      <ng2-completer
-        inputClass="input"
-        [datasource]="chars"
-        [minSearchLength]="0"></ng2-completer>
+    <div class="control is-expanded is-fullwidth">
+      <span class="is-fullwidth">
+        <ng2-completer
+          title="name"
+          id="name"
+          name="name"
+          required
+          inputClass="input"
+          [datasource]="chars"
+          [minSearchLength]="0"
+          ngModel
+          #nameCtrl="ngModel"></ng2-completer>
+      </span>
     </div>
+  </div>
+  <div class="control">
+    <button
+      class="button is-dark is-expanded is-fullwidth"
+      [disabled]="nameCtrl.invalid"
+      type="submit"
+      [ngClass]="{'light-side': selectedSide === 'light', 'dark-side': selectedSide === 'dark'}">
+      Add character
+    </button>
   </div>
 </form>
 

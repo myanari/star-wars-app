@@ -3,11 +3,11 @@
     <app-pre-defined-character *ngIf="!userWillAddOwnChar"></app-pre-defined-character>
     <div *ngIf="!userWillAddOwnChar" class="is-divider" data-content="OR"></div>
     <button
-      style="margin-bottom: 1.5rem"
       class="button is-fullwidth is-dark"
       (click)="userWillAddOwnChar = !userWillAddOwnChar">
       {{ userWillAddOwnChar ? 'Enter predefined character' : 'Enter Your Own Character' }}
     </button>
+    <div *ngIf="userWillAddOwnChar" class="is-divider" data-content="OR"></div>
     <app-user-defined-character *ngIf="userWillAddOwnChar"></app-user-defined-character>
   </div>
 </div>
