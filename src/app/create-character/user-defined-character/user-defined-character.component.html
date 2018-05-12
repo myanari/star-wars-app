@@ -32,14 +32,16 @@
         class="input"
         name="image"
         id="image"
-        ngModel
-        placeholder="Paste a url for the character icon! (Optional)">
+        [(ngModel)]="characterName"
+        required
+        #imageCtrl="ngModel"
+        placeholder="Paste a url for the character icon!">
     </span>
   </div>
   <div class="control" style="margin-top: 1rem">
     <button
       class="button is-dark is-expanded is-fullwidth"
-      [disabled]="nameCtrl.invalid"
+      [disabled]="nameCtrl.invalid || imageCtrl.invalid"
       type="submit"
       [ngClass]="{'light-side': selectedSide === 'light', 'dark-side': selectedSide === 'dark'}">
       Add character

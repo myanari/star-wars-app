@@ -17,6 +17,7 @@ export class UserDefinedCharacterComponent implements OnInit {
   swService: StarWarsService;
   httpClient: HttpClient;
   completerData: CompleterData;
+  characterName;
   selectedSide;
   sides;
   chars = [];
@@ -50,4 +51,6 @@ export class UserDefinedCharacterComponent implements OnInit {
     this.swService.addCharacter(value.name, value.side);
     this.swService.imageProvided.next(value.image);
   }
+
+
 }

@@ -46,10 +46,11 @@ export class ItemComponent implements OnInit {
       (err) => {
         if (err.status === 200) {
           this.path = '/assets/characters/' + lowerCaseChar + '.svg';
+          return;
         } else {
-          this.path = '/assets/characters/' + lowerCaseChar + '.svg';
           this.swService.imageProvided.subscribe(image => {
             this.path = image;
+            return;
           });
         }
       });
