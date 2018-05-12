@@ -13,16 +13,12 @@ import { ImageService } from '../image.service';
 export class ItemComponent implements OnInit {
   @Input() char;
   swService: StarWarsService;
-  imageService: ImageService;
-
-  imgProvider;
   path = '';
   name = '';
   user = '';
 
-  constructor(swService: StarWarsService, imageService: ImageService) {
+  constructor(swService: StarWarsService) {
     this.swService = swService;
-    this.imageService = imageService;
   }
 
   ngOnInit() {
@@ -33,18 +29,12 @@ export class ItemComponent implements OnInit {
     if (names.length === 1 && names[0] !== 'bb8' && names[0] !== 'c3p0' && names[0] !== 'r2d2') {
       names.push(Math.floor(Math.random() * 100).toString());
     }
-    this.imgProvider = this.imageService.imageProvider;
     this.user = names.join('');
-    if (this.imageService.imageProvider === 'user') {
-      if (this.imageService.photo === null) {
-        this.path = '/assets/characters/' + this.char.name + '.svg';
-      } else {
-        this.path = this.char.image;
-      }
-    } else {
-      this.path = this.char.image;
+    this.path = this.char.image;
+    console.log(this.char);
+    if (this.char.image === undefined) {
+      this.path = `/assets/characters/${this.char.name}.svg`;
     }
-    console.log(this.char.image, this.char.name);
   }
 
   onAssign(side: string) {
