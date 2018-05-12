@@ -15,6 +15,7 @@ import { LoggerService } from './logger.service';
 import { HeaderComponent } from './header/header.component';
 import { CreateCharacterComponent } from './create-character/create-character.component';
 import { UserDefinedCharacterComponent } from './create-character/user-defined-character/user-defined-character.component';
+import { PreDefinedCharacterComponent } from './create-character/pre-defined-character/pre-defined-character.component';
 
 const routes = [
   { path: 'characters', component: TabsComponent, children: [
@@ -33,7 +34,8 @@ const routes = [
     ItemComponent,
     CreateCharacterComponent,
     HeaderComponent,
-    UserDefinedCharacterComponent
+    UserDefinedCharacterComponent,
+    PreDefinedCharacterComponent
   ],
   imports: [
     BrowserModule,
