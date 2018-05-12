@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StarWarsService } from '../../star-wars.service';
+import { ImageService } from '../../image.service';
 
 @Component({
   selector: 'app-pre-defined-character',
@@ -8,12 +9,14 @@ import { StarWarsService } from '../../star-wars.service';
 })
 export class PreDefinedCharacterComponent implements OnInit {
   swService: StarWarsService;
+  imageService: ImageService;
   selectedSide = '';
   sides;
   allCharacters = [];
 
-  constructor(swService: StarWarsService) {
+  constructor(swService: StarWarsService, imageService: ImageService) {
     this.swService = swService;
+    this.imageService = imageService;
   }
 
   ngOnInit() {
@@ -28,5 +31,6 @@ export class PreDefinedCharacterComponent implements OnInit {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
     this.swService.addCharacter(value.name, value.side, value.name);
+    this.imageService.determineImageProvider('server');
   }
 }

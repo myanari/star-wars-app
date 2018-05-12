@@ -4,10 +4,9 @@ import { CompleterService, CompleterData } from 'ng2-completer';
 
 import { StarWarsService } from '../../star-wars.service';
 import { Results, CharacterName } from './results.model';
+import { ImageService } from '../../image.service';
 
-import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
-
 
 @Component({
   selector: 'app-user-defined-character',
@@ -19,15 +18,22 @@ import 'rxjs/add/operator/map';
 export class UserDefinedCharacterComponent implements OnInit {
   swService: StarWarsService;
   httpClient: HttpClient;
+  imageService: ImageService;
   completerData: CompleterData;
   isImageRequired = true;
   selectedSide;
   sides;
   chars = [];
 
-  constructor(swService: StarWarsService, httpClient: HttpClient, completerService: CompleterService) {
+  constructor(
+    swService: StarWarsService,
+    httpClient: HttpClient,
+    completerService: CompleterService,
+    imageService: ImageService
+  ) {
     this.swService = swService;
     this.httpClient = httpClient;
+    this.imageService = imageService;
     this.completerData = completerService.local(this.chars, 'name', 'name');
   }
 
@@ -50,13 +56,11 @@ export class UserDefinedCharacterComponent implements OnInit {
 
   onInputChange(entered) {
     const formattedName = entered.toLowerCase().split(' ').join('-');
-    this.httpClient.get('/assets/characters/' + formattedName + '.svg').subscribe(() => {},
+    this.httpClient.get('/assets/characters/' + formattedName + '.svg')
+      .subscribe(
+        () => {},
       (err) => {
-        if (err.status === 200) {
-          this.isImageRequired = false;
-        } else {
-          this.isImageRequired = true;
-        }
+        this.isImageRequired = err.status !== 200;
     });
   }
 
@@ -64,9 +68,6 @@ export class UserDefinedCharacterComponent implements OnInit {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
     this.swService.addCharacter(value.name, value.side, value.image);
-    if (this.isImageRequired) {
-      this.swService.imageNotInServer.next(value.image);
-      console.log('image required!');
-    }
+    this.imageService.determineImageProvider('user');
   }
 }

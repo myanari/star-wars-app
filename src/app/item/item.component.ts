@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Injectable } from '@angular/core';
 
 import { StarWarsService } from '../star-wars.service';
+import { ImageService } from '../image.service';
 
 @Component({
   selector: 'app-item',
@@ -12,13 +13,15 @@ import { StarWarsService } from '../star-wars.service';
 export class ItemComponent implements OnInit {
   @Input() char;
   swService: StarWarsService;
+  imageService: ImageService;
 
   path = '';
   name = '';
   user = '';
 
-  constructor(swService: StarWarsService) {
+  constructor(swService: StarWarsService, imageService: ImageService) {
     this.swService = swService;
+    this.imageService = imageService;
   }
 
   ngOnInit() {
@@ -31,12 +34,16 @@ export class ItemComponent implements OnInit {
     }
 
     this.user = names.join('');
+    console.log('provider: ' + this.imageService.imageProvider);
 
-    this.path = `/assets/characters/${this.char.image}.svg`;
-
+    if (this.imageService.imageProvider === 'server') {
+      this.path = `/assets/characters/${this.char.image}.svg`;
+    } else {
+      this.path = this.char.image || `/assets/characters/${this.char.image}.svg`;
+    }
   }
 
   onAssign(side: string) {
-    this.swService.onSideChosen({ name: this.char.name, side: side, image: this.char.side });
+    this.swService.onSideChosen({ name: this.char.name, side: side, image: this.char.image });
   }
 }
