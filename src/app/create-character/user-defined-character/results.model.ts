@@ -1,7 +1,7 @@
 export interface CharacterName {
-    name: string
+  name: string;
 }
-  
+
 export interface Results {
-    results: Array<CharacterName>
+  results: Array<CharacterName>;
 }

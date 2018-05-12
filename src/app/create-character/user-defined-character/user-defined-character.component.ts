@@ -34,11 +34,12 @@ export class UserDefinedCharacterComponent implements OnInit {
     while (page < 10) {
       this.httpClient.get(`https://swapi.co/api/people/?page=${page}`).subscribe((data: Results) => {
         data.results.map((char: CharacterName) => {
-          this.chars.push(char.name);
+          this.chars.push({ name: char.name, side: '' });
         });
       });
       page++;
     }
+
   }
 
   onSubmit(submittedForm) {

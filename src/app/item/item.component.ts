@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { StarWarsService } from '../star-wars.service';
 
@@ -10,17 +11,19 @@ import { StarWarsService } from '../star-wars.service';
 export class ItemComponent implements OnInit {
   @Input() char;
   swService: StarWarsService;
+  http: HttpClient;
 
   path = '';
   name = '';
   user = '';
 
-  constructor(swService: StarWarsService) {
+  constructor(swService: StarWarsService, http: HttpClient) {
     this.swService = swService;
+    this.http = http;
   }
 
   ngOnInit() {
-    this.path = './assets/characters/' + this.char.name.toLowerCase() + '.svg';
+    this.getImagePath();
     this.name = this.char.name.split('-').join(' ');
 
     const names = this.name.split(' ');
@@ -34,5 +37,18 @@ export class ItemComponent implements OnInit {
 
   onAssign(side: string) {
     this.swService.onSideChosen({name: this.char.name, side: side});
+  }
+
+  getImagePath() {
+    const lowerCaseChar = this.char.name.toLowerCase();
+    this.http.get('/assets/characters/' + lowerCaseChar + '.svg')
+      .subscribe(() => {},
+      (err) => {
+        if (err.status === 200) {
+          this.path = '/assets/characters/' + lowerCaseChar + '.svg';
+        } else {
+          this.path = 'https://starwars-visualguide.com/assets/img/characters/1.jpg';
+        }
+      });
   }
 }
