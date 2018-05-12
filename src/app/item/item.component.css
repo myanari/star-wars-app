@@ -39,3 +39,7 @@ img {
   width: 128px;
   height: 128px;
 }
+
+.is-custom-image {
+  object-fit: cover;
+}

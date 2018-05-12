@@ -12,6 +12,7 @@ import { StarWarsService } from '../star-wars.service';
 export class ItemComponent implements OnInit {
   @Input() char;
   swService: StarWarsService;
+  isCustomImage;
   path = '';
   name = '';
   user = '';
@@ -30,10 +31,11 @@ export class ItemComponent implements OnInit {
     }
     this.user = names.join('');
     this.path = this.char.image;
-    console.log(this.char);
     if (this.char.image === undefined) {
       this.path = `/assets/characters/${this.char.name}.svg`;
     }
+    this.isCustomImage = !this.path.startsWith('/assets/characters');
+    console.log(this.char.name + ' isCustomImage? => ' + this.isCustomImage);
   }
 
   onAssign(side: string) {
