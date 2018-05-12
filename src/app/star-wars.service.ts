@@ -10,7 +10,7 @@ export class StarWarsService {
     { name: 'admiral-ackbar', side: '' },
     { name: 'bb8', side: '' },
     { name: 'boba-fett', side: '' },
-    { name: 'boba-fett', side: '' },
+    { name: 'c3p0', side: '' },
     { name: 'captain-phasma', side: '' },
     { name: 'chewbacca', side: '' },
     { name: 'clone-trooper', side: '' },
