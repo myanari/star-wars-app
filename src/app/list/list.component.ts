@@ -37,10 +37,4 @@ export class ListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-  getImage() {
-    this.swService.customImage.subscribe(image => {
-      // this.path = image;
-      console.log(image);
-    });
-  }
 }

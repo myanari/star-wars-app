@@ -5,7 +5,6 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class StarWarsService {
-  customImage = new BehaviorSubject<string>('a');
   charactersChanged = new Subject<void>();
   private logService: LoggerService;
   private possibleCharacters = [
