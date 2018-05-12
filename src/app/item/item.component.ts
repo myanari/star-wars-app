@@ -32,12 +32,8 @@ export class ItemComponent implements OnInit {
     if (names.length === 1 && names[0] !== 'bb8' && names[0] !== 'c3p0' && names[0] !== 'r2d2') {
       names.push(Math.floor(Math.random() * 100).toString());
     }
-
     this.user = names.join('');
-    console.log('provider: ' + this.imageService.imageProvider);
     this.path = this.char.image;
-    console.log(this.char);
-
   }
 
   onAssign(side: string) {
