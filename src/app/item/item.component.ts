@@ -33,7 +33,15 @@ export class ItemComponent implements OnInit {
       names.push(Math.floor(Math.random() * 100).toString());
     }
     this.user = names.join('');
-    this.path = this.char.image;
+    if (this.imageService.imageProvider === 'user') {
+      if (this.imageService.photo === null) {
+        this.path = '/assets/characters/' + this.char.name + '.svg';
+      } else {
+        this.path = this.char.image;
+      }
+    } else {
+      this.path = this.char.image;
+    }
   }
 
   onAssign(side: string) {
