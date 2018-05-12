@@ -1,5 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CompleterService, CompleterData } from 'ng2-completer';
 
 import { StarWarsService } from '../../star-wars.service';
 import { Results, CharacterName } from './results.model';
@@ -15,13 +16,15 @@ import { Results, CharacterName } from './results.model';
 export class UserDefinedCharacterComponent implements OnInit {
   swService: StarWarsService;
   httpClient: HttpClient;
+  completerData: CompleterData;
   selectedSide;
   sides;
   chars = [];
 
-  constructor(swService: StarWarsService, httpClient: HttpClient) {
+  constructor(swService: StarWarsService, httpClient: HttpClient, completerService: CompleterService) {
     this.swService = swService;
     this.httpClient = httpClient;
+    this.completerData = completerService.local(this.chars, 'name', 'name');
   }
 
   ngOnInit() {
@@ -34,17 +37,17 @@ export class UserDefinedCharacterComponent implements OnInit {
     while (page < 10) {
       this.httpClient.get(`https://swapi.co/api/people/?page=${page}`).subscribe((data: Results) => {
         data.results.map((char: CharacterName) => {
-          this.chars.push({ name: char.name, side: '' });
+          this.chars.push({ name: char.name, side: ''});
         });
       });
       page++;
     }
-
   }
 
   onSubmit(submittedForm) {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
     this.swService.addCharacter(value.name, value.side);
+    console.log(submittedForm);
   }
 }

@@ -17,14 +17,26 @@
           name="name"
           required
           inputClass="input"
-          [datasource]="chars"
+          [datasource]="completerData"
           [minSearchLength]="0"
           ngModel
           #nameCtrl="ngModel"></ng2-completer>
       </span>
     </div>
   </div>
-  <div class="control">
+  <div class="control is-expanded is-fullwidth">
+    <span class="is-fullwidth">
+      <input
+        type="url"
+        title="image"
+        class="input"
+        name="image"
+        id="image"
+        ngModel
+        placeholder="Paste a url for the character icon! (Optional)">
+    </span>
+  </div>
+  <div class="control" style="margin-top: 1rem">
     <button
       class="button is-dark is-expanded is-fullwidth"
       [disabled]="nameCtrl.invalid"
