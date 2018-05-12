@@ -20,13 +20,13 @@ export class PreDefinedCharacterComponent implements OnInit {
     this.sides = this.swService.getSides();
     const allChars = this.swService.getAllPossibleCharacters();
     allChars.map((char) => {
-      this.allCharacters.push(char);
+      this.allCharacters.push({ name: char.name, image: char.name });
     });
   }
 
   onSubmit(submittedForm) {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
-    this.swService.addCharacter(value.name, value.side);
+    this.swService.addCharacter(value.name, value.side, value.name);
   }
 }

@@ -22,7 +22,7 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.path = '/assets/characters/' + this.char.name.toLowerCase() + '.svg';
+    this.path = '/assets/characters/' + this.char.image + '.svg';
 
     this.name = this.char.name.split('-').join(' ');
 
@@ -33,13 +33,9 @@ export class ItemComponent implements OnInit {
     }
 
     this.user = names.join('');
-
-    this.swService.customImage.subscribe(image => {
-      this.path = image;
-    });
   }
 
   onAssign(side: string) {
-    this.swService.onSideChosen({name: this.char.name, side: side});
+    this.swService.onSideChosen({ name: this.char.name, side: side, image: this.char.image });
   }
 }

@@ -45,8 +45,8 @@ export class StarWarsService {
     { name: 'yoda', side: '' }
   ];
   private displayedCharacters = [
-    { name: 'c3p0', side: '' },
-    { name: 'han-solo', side: '' }
+    { name: 'c3p0', side: '', image: 'c3p0' },
+    { name: 'han-solo', side: '', image: 'han-solo' }
   ];
 
   availableSides = [
@@ -63,12 +63,12 @@ export class StarWarsService {
     return this.availableSides;
   }
 
-  addCharacter(name, side) { // The only function that touches possibleCharacters list
+  addCharacter(name, side, image) { // The only function that touches possibleCharacters list
     const formattedName = name.toLowerCase().split(' ').join('-');
     // Checking if character is valid (exists in possibleCharacters) or if it even exist
     const charAlreadyDisplayed = this.displayedCharacters.findIndex(char => char.name === name);
     if (charAlreadyDisplayed !== -1) { return; }
-    const newChar = { name: formattedName, side: side };
+    const newChar = { name: formattedName, side: side, image: image };
     this.displayedCharacters.push(newChar);
   }
 

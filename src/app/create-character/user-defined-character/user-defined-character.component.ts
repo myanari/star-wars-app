@@ -20,7 +20,6 @@ export class UserDefinedCharacterComponent implements OnInit {
   swService: StarWarsService;
   httpClient: HttpClient;
   completerData: CompleterData;
-  enteredCharacter = '';
   isImageRequired = true;
   selectedSide;
   sides;
@@ -56,6 +55,7 @@ export class UserDefinedCharacterComponent implements OnInit {
         if (err.status === 200) {
           this.isImageRequired = false;
           console.log(this.isImageRequired);
+          console.log('tem imagem aqui noserver');
         } else {
           this.isImageRequired = true;
         }
@@ -65,7 +65,7 @@ export class UserDefinedCharacterComponent implements OnInit {
   onSubmit(submittedForm) {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
-    this.swService.addCharacter(value.name, value.side);
+    this.swService.addCharacter(value.name, value.side, value.image);
     this.swService.customImage.next(value.image);
   }
 }

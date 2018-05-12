@@ -19,7 +19,7 @@
           inputClass="input"
           [datasource]="completerData"
           [minSearchLength]="0"
-          [(ngModel)]="enteredCharacter"
+          ngModel
           (ngModelChange)="onInputChange($event)"
           #nameCtrl="ngModel"></ng2-completer>
       </span>
