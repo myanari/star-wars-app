@@ -37,7 +37,7 @@ export class UserDefinedCharacterComponent implements OnInit {
     while (page < 10) {
       this.httpClient.get(`https://swapi.co/api/people/?page=${page}`).subscribe((data: Results) => {
         data.results.map((char: CharacterName) => {
-          this.chars.push({ name: char.name, side: ''});
+          this.chars.push({ name: char.name, side: '' });
         });
       });
       page++;
@@ -48,6 +48,6 @@ export class UserDefinedCharacterComponent implements OnInit {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
     this.swService.addCharacter(value.name, value.side);
-    console.log(submittedForm);
+    this.swService.imageProvided.next(value.image);
   }
 }

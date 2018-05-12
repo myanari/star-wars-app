@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { LoggerService } from './logger.service';
 import { Subject } from 'rxjs/Subject';
-import 'rxjs/operator/map';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class StarWarsService {
+  imageProvided = new BehaviorSubject<string>('a');
   charactersChanged = new Subject<void>();
   private logService: LoggerService;
-  private usersOwnCharacters = [];
   private possibleCharacters = [
     { name: 'admiral-ackbar', side: '' },
     { name: 'bb8', side: '' },
@@ -65,12 +65,10 @@ export class StarWarsService {
 
   addCharacter(name, side) { // The only function that touches possibleCharacters list
     const formattedName = name.toLowerCase().split(' ').join('-');
-    // Chacking if character is valid (exists in possibleCharacters) or if it even exist
+    // Checking if character is valid (exists in possibleCharacters) or if it even exist
     const charAlreadyDisplayed = this.displayedCharacters.findIndex(char => char.name === name);
-    if (charAlreadyDisplayed !== -1) {
-      return;
-    }
-    const newChar = {name: formattedName, side: side};
+    if (charAlreadyDisplayed !== -1) { return; }
+    const newChar = { name: formattedName, side: side };
     this.displayedCharacters.push(newChar);
   }
 

@@ -47,7 +47,10 @@ export class ItemComponent implements OnInit {
         if (err.status === 200) {
           this.path = '/assets/characters/' + lowerCaseChar + '.svg';
         } else {
-          this.path = 'https://starwars-visualguide.com/assets/img/characters/1.jpg';
+          this.path = '/assets/characters/' + lowerCaseChar + '.svg';
+          this.swService.imageProvided.subscribe(image => {
+            this.path = image;
+          });
         }
       });
   }
