@@ -35,12 +35,9 @@ export class ItemComponent implements OnInit {
 
     this.user = names.join('');
     console.log('provider: ' + this.imageService.imageProvider);
+    this.path = this.char.image;
+    console.log(this.char);
 
-    if (this.imageService.imageProvider === 'server') {
-      this.path = `/assets/characters/${this.char.image}.svg`;
-    } else {
-      this.path = this.char.image || `/assets/characters/${this.char.image}.svg`;
-    }
   }
 
   onAssign(side: string) {

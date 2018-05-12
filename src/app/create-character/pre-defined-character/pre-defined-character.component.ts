@@ -30,7 +30,7 @@ export class PreDefinedCharacterComponent implements OnInit {
   onSubmit(submittedForm) {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
-    this.swService.addCharacter(value.name, value.side, value.name);
+    this.swService.addCharacter(value.name, value.side, `/assets/characters/${value.name}.svg`);
     this.imageService.determineImageProvider('server');
   }
 }

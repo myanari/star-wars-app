@@ -10,7 +10,7 @@ export class StarWarsService {
     { name: 'admiral-ackbar', side: '' },
     { name: 'bb8', side: '' },
     { name: 'boba-fett', side: '' },
-    { name: 'c3p0', side: '' },
+    { name: 'boba-fett', side: '' },
     { name: 'captain-phasma', side: '' },
     { name: 'chewbacca', side: '' },
     { name: 'clone-trooper', side: '' },
@@ -43,8 +43,8 @@ export class StarWarsService {
     { name: 'yoda', side: '' }
   ];
   private displayedCharacters = [
-    { name: 'c3p0', side: '', image: 'c3p0' },
-    { name: 'han-solo', side: '', image: 'han-solo' }
+    { name: 'c3p0', side: '', image: '/assets/characters/c3p0.svg' },
+    { name: 'han-solo', side: '', image: '/assets/characters/han-solo.svg' }
   ];
 
   availableSides = [
