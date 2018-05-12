@@ -19,7 +19,8 @@
           inputClass="input"
           [datasource]="completerData"
           [minSearchLength]="0"
-          ngModel
+          [(ngModel)]="enteredCharacter"
+          (ngModelChange)="onInputChange($event)"
           #nameCtrl="ngModel"></ng2-completer>
       </span>
     </div>
@@ -32,8 +33,8 @@
         class="input"
         name="image"
         id="image"
-        [(ngModel)]="characterName"
-        required
+        ngModel
+        [required]="isImageRequired"
         #imageCtrl="ngModel"
         placeholder="Paste a url for the character icon!">
     </span>

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 import { StarWarsService } from '../star-wars.service';
 
@@ -11,19 +10,17 @@ import { StarWarsService } from '../star-wars.service';
 export class ItemComponent implements OnInit {
   @Input() char;
   swService: StarWarsService;
-  http: HttpClient;
 
   path = '';
   name = '';
   user = '';
 
-  constructor(swService: StarWarsService, http: HttpClient) {
+  constructor(swService: StarWarsService) {
     this.swService = swService;
-    this.http = http;
   }
 
   ngOnInit() {
-    this.getImagePath();
+    this.path = '/assets/characters/' + this.char.name.toLowerCase() + '.svg';
     this.name = this.char.name.split('-').join(' ');
 
     const names = this.name.split(' ');
@@ -39,20 +36,7 @@ export class ItemComponent implements OnInit {
     this.swService.onSideChosen({name: this.char.name, side: side});
   }
 
-  getImagePath() {
-    const lowerCaseChar = this.char.name.toLowerCase();
-    this.http.get('/assets/characters/' + lowerCaseChar + '.svg')
-      .subscribe(() => {},
-      (err) => {
-        if (err.status === 200) {
-          this.path = '/assets/characters/' + lowerCaseChar + '.svg';
-          return;
-        } else {
-          this.swService.imageProvided.subscribe(image => {
-            this.path = image;
-            return;
-          });
-        }
-      });
+  onError() {
+    this.swService.isImageRequired.next();
   }
 }

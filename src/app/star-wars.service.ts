@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class StarWarsService {
-  imageProvided = new BehaviorSubject<string>('a');
+  isImageRequired = new Subject<void>();
   charactersChanged = new Subject<void>();
   private logService: LoggerService;
   private possibleCharacters = [
@@ -45,14 +45,14 @@ export class StarWarsService {
     { name: 'yoda', side: '' }
   ];
   private displayedCharacters = [
-    {name: 'c3p0', side: ''},
-    {name: 'han-solo', side: ''}
+    { name: 'c3p0', side: '' },
+    { name: 'han-solo', side: '' }
   ];
 
   availableSides = [
-    {display: 'Choose Side', value: ''},
-    {display: 'Light', value: 'light'},
-    {display: 'Dark', value: 'dark'}
+    { display: 'Choose Side', value: '' },
+    { display: 'Light', value: 'light' },
+    { display: 'Dark', value: 'dark' }
   ];
 
   constructor(logService: LoggerService) {
