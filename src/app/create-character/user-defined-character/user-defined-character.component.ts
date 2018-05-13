@@ -19,6 +19,7 @@ export class UserDefinedCharacterComponent implements OnInit {
   httpClient: HttpClient;
   completerData: CompleterData;
   isImageRequired = true;
+  display;
   selectedSide;
   sides;
   chars = [];
@@ -35,6 +36,7 @@ export class UserDefinedCharacterComponent implements OnInit {
 
   ngOnInit() {
     this.sides = this.swService.getSides();
+    this.display = window.matchMedia("(max-width: 25rem)").matches ? 'Side' : 'Choose Side';
     this.fetchCharacters();
   }
 

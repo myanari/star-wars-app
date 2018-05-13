@@ -57,7 +57,7 @@ export class StarWarsService {
   }
 
   getSides() {
-    return this.availableSides;
+    return [... this.availableSides];
   }
 
   addCharacter(name, side, image) { // The only function that touches possibleCharacters list
@@ -77,7 +77,7 @@ export class StarWarsService {
   }
 
   getAllPossibleCharacters() {
-    return this.possibleCharacters;
+    return [... this.possibleCharacters];
   }
 
   onSideChosen(charInfo) {

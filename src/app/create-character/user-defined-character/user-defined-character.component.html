@@ -3,6 +3,7 @@
     <p class="control">
       <span class="select">
         <select title="side" name="side" id="side" class="is-dark" ngModel>
+          <option value="">{{ display }}</option>
           <option
             *ngFor="let option of sides"
             [value]="option.value">{{option.display}}</option>
