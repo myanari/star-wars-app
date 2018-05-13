@@ -24,13 +24,6 @@ import { PreDefinedCharacterComponent} from './pre-defined-character/pre-defined
     HttpClientModule,
     Ng2CompleterModule,
     ReactiveFormsModule
-  ],
-  exports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    Ng2CompleterModule
   ]
 })
 export class CreateCharacterModule {}
