@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 import { Ng2CompleterModule } from 'ng2-completer';
 
 import { StarWarsService } from './star-wars.service';
@@ -16,15 +16,6 @@ import { HeaderComponent } from './header/header.component';
 import { CreateCharacterComponent } from './create-character/create-character.component';
 import { UserDefinedCharacterComponent } from './create-character/user-defined-character/user-defined-character.component';
 import { PreDefinedCharacterComponent } from './create-character/pre-defined-character/pre-defined-character.component';
-
-const routes = [
-  { path: 'characters', component: TabsComponent, children: [
-      { path: '', redirectTo: 'all', pathMatch: 'full' },
-      { path: ':side', component: ListComponent }
-    ] },
-  { path: 'new', component: CreateCharacterComponent },
-  { path: '**', redirectTo: 'characters'}
-];
 
 @NgModule({
   declarations: [
@@ -41,8 +32,8 @@ const routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
-    Ng2CompleterModule
+    Ng2CompleterModule,
+    AppRoutingModule
   ],
   providers: [StarWarsService, LoggerService],
   bootstrap: [AppComponent]
