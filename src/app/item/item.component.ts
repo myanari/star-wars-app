@@ -35,7 +35,6 @@ export class ItemComponent implements OnInit {
       this.path = `/assets/characters/${this.char.name}.svg`;
     }
     this.isCustomImage = !this.path.startsWith('/assets/characters');
-    console.log(this.char.name + ' isCustomImage? => ' + this.isCustomImage);
   }
 
   onAssign(side: string) {

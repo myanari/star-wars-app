@@ -62,6 +62,5 @@ export class UserDefinedCharacterComponent implements OnInit {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
     this.swService.addCharacter(value.name, value.side, value.image);
-    console.log(submittedForm.value.image);
   }
 }
