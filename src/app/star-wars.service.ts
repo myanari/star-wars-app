@@ -66,7 +66,7 @@ export class StarWarsService {
     const charAlreadyDisplayed = this.displayedCharacters.findIndex(char => char.name === name);
     if (charAlreadyDisplayed !== -1) { return; }
     const newChar = { name: formattedName, side: side, image: image };
-    this.displayedCharacters.push(newChar);
+    this.displayedCharacters.unshift(newChar);
   }
 
   getCharacters(chosenTab) {
