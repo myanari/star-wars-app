@@ -15,3 +15,7 @@
 .navbar-item__brand:hover {
   filter: saturate(500%) invert(20%);
 }
+
+@media screen and (max-width: 1087px) {
+  padding: .5rem;
+}
