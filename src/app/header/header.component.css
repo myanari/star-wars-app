@@ -7,3 +7,11 @@
     max-height: 2rem;
   }
 }
+
+.navbar-item__brand {
+  cursor: pointer;
+}
+
+.navbar-item__brand:hover {
+  filter: saturate(500%) invert(20%);
+}
