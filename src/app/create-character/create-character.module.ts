@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Ng2CompleterModule } from 'ng2-completer';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 
 import { CreateCharacterComponent } from './create-character.component';
 import { UserDefinedCharacterComponent } from './user-defined-character/user-defined-character.component';
 import { PreDefinedCharacterComponent } from './pre-defined-character/pre-defined-character.component';
+import { ItemComponent } from '../item/item.component';
+
+import { StarWarsService } from '../star-wars.service';
+import { LoggerService } from '../logger.service';
 
 @NgModule({
   declarations: [
@@ -18,12 +21,11 @@ import { PreDefinedCharacterComponent } from './pre-defined-character/pre-define
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       { path: '', component: CreateCharacterComponent }
     ]),
-    HttpClientModule,
-    Ng2CompleterModule,
-    ReactiveFormsModule
+    Ng2CompleterModule
   ]
 })
 export class CreateCharacterModule {}
