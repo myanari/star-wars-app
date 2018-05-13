@@ -75,5 +75,10 @@ img {
 .card {
   box-shadow: 0px 0px 0px grey;
   box-shadow: .1px .9px 3px grey;
-
+  margin-bottom: 5px;
 }
+
+/* .first-card {
+  box-shadow: 1px 8px 20px grey;
+  transition:  box-shadow .5s ease-in;
+} */

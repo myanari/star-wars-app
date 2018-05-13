@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { StarWarsService } from '../star-wars.service';
@@ -10,8 +10,7 @@ import { ItemComponent } from '../item/item.component';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit, OnDestroy, AfterViewInit {
-  @ViewChild(ItemComponent) listChild: ElementRef;
+export class ListComponent implements OnInit, OnDestroy {
   characters = [];
   loadedSide = 'all';
   subscription;
@@ -35,9 +34,6 @@ export class ListComponent implements OnInit, OnDestroy, AfterViewInit {
         this.characters = this.swService.getCharacters(this.loadedSide);
       }
     );
-  }
-  ngAfterViewInit() {
-    console.log(this.listChild);
   }
 
   ngOnDestroy() {
