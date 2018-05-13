@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 
 import { TabsComponent } from './tabs/tabs.component';
 import { ListComponent } from './list/list.component';
@@ -16,7 +15,6 @@ const routes = [
 
 @NgModule({
   imports: [
-    FormsModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
