@@ -19,3 +19,11 @@
 @media screen and (max-width: 1087px) {
   padding: .5rem;
 }
+
+a.navbar-burger:hover {
+  color: rgb(200, 200, 200);
+}
+
+a.navbar-burger {
+  color: #fff;
+}

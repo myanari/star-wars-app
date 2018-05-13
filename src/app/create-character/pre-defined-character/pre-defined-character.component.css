@@ -29,3 +29,14 @@
   color: #fff;
   font-weight: bold;
 }
+
+.field {
+  margin-bottom: 0;
+}
+
+.help {
+  margin-bottom: .75rem;
+  margin-top: .1rem;
+  text-align: right;
+  margin-right: 1rem;
+}
