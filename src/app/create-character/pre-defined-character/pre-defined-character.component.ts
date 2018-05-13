@@ -10,6 +10,7 @@ export class PreDefinedCharacterComponent implements OnInit {
   swService: StarWarsService;
   selectedSide = '';
   sides;
+  display;
   allCharacters = [];
 
   constructor(swService: StarWarsService) {
@@ -18,6 +19,8 @@ export class PreDefinedCharacterComponent implements OnInit {
 
   ngOnInit() {
     this.sides = this.swService.getSides();
+    this.display = window.matchMedia("(max-width: 25rem)").matches ? 'Side' : 'Choose Side';
+    console.log(this.display);
     const allChars = this.swService.getAllPossibleCharacters();
     allChars.map((char) => {
       this.allCharacters.push({ name: char.name, image: char.name });

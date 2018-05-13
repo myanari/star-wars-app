@@ -48,7 +48,6 @@ export class StarWarsService {
   ];
 
   availableSides = [
-    { display: 'Choose Side', value: '' },
     { display: 'Light', value: 'light' },
     { display: 'Dark', value: 'dark' }
   ];
