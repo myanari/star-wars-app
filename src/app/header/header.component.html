@@ -3,18 +3,18 @@
     <div class="navbar-item">
       <img src="../../assets/deathstar.svg">
     </div>
-    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <a role="button" class="navbar-burger" [ngClass]="{'is-active': isActive}" (click)="isActive = !isActive" data-target="navMenu" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
-  <div class="navbar-menu">
+  <div class="navbar-menu" [ngClass]="{'is-active': isActive}">
     <div class="navbar-start">
-      <a class="navbar-item" routerLink="/characters" routerLinkActive="is-active is-tab">
+      <a class="navbar-item" (click)="isActive = false" routerLink="/characters" routerLinkActive="is-active is-tab">
         Star Wars Characters
       </a>
-      <a class="navbar-item" routerLink="/new" routerLinkActive="is-active is-tab">
+      <a class="navbar-item" (click)="isActive = false" routerLink="/new" routerLinkActive="is-active is-tab">
         Create character
       </a>
     </div>
