@@ -4,7 +4,6 @@ import { CompleterService, CompleterData } from 'ng2-completer';
 
 import { StarWarsService } from '../../star-wars.service';
 import { Results, CharacterName } from './results.model';
-import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-user-defined-character',

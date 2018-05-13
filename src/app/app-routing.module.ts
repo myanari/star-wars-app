@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
-import { CreateCharacterComponent } from './create-character/create-character.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ListComponent } from './list/list.component';
 
@@ -10,12 +10,13 @@ const routes = [
       { path: '', redirectTo: 'all', pathMatch: 'full' },
       { path: ':side', component: ListComponent }
     ] },
-  { path: 'new', component: CreateCharacterComponent },
+  { path: 'new', loadChildren: './create-character/create-character.module#CreateCharacterModule' },
   { path: '**', redirectTo: 'characters'}
 ];
 
 @NgModule({
   imports: [
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
