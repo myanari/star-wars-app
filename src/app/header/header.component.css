@@ -1,3 +1,9 @@
 .navbar-item.is-tab.is-active {
   border-bottom: 2px #fff;
 }
+
+@media (max-width: 25rem) {
+  .navbar-item img {
+    max-height: 2rem;
+  }
+}
