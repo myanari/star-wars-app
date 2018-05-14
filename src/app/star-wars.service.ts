@@ -4,6 +4,7 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class StarWarsService {
+  userSubmitted = new Subject<void>();
   charactersChanged = new Subject<void>();
   private logService: LoggerService;
   private possibleCharacters = [

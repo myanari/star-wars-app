@@ -70,6 +70,11 @@ export class UserDefinedCharacterComponent implements OnInit {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
     this.swService.addCharacter(value.name, value.side, value.image);
-    this.router.navigateByUrl('/characters');
+    this.router.navigateByUrl('/characters').then(() => {
+        this.swService.userSubmitted.next();
+      },
+      (e) => {
+        console.log(e);
+      });
   }
 }

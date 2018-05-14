@@ -36,14 +36,6 @@ export class ListComponent implements OnInit, OnDestroy {
     );
   }
 
-  // ngAfterViewInit() {
-  //   let classList = this.item.nativeElement.classList;
-  //   classList.add('first');
-  //   setTimeout(() => {
-  //     classList.remove('first');
-  //   }, 1500);
-  // }
-
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

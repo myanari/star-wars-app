@@ -22,7 +22,7 @@ export class PreDefinedCharacterComponent implements OnInit {
 
   ngOnInit() {
     this.sides = this.swService.getSides();
-    this.display = window.matchMedia("(max-width: 25rem)").matches ? 'Side' : 'Choose Side';
+    this.display = window.matchMedia('(max-width: 25rem)').matches ? 'Side' : 'Choose Side';
     const allChars = this.swService.getAllPossibleCharacters();
     allChars.map((char) => {
       this.allCharacters.push({ name: char.name, image: char.name });
@@ -33,6 +33,12 @@ export class PreDefinedCharacterComponent implements OnInit {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
     this.swService.addCharacter(value.name, value.side, `/assets/characters/${value.name}.svg`);
-    this.router.navigateByUrl('/characters');
+    this.router.navigateByUrl('/characters')
+      .then(() => {
+        this.swService.userSubmitted.next();
+      },
+      (e) => {
+        console.log(e);
+      });
   }
 }
