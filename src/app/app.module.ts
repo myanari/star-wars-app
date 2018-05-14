@@ -11,6 +11,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { ListComponent } from './list/list.component';
 import { ItemComponent } from './item/item.component';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HeaderComponent } from './header/header.component';
     TabsComponent,
     ListComponent,
     ItemComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
