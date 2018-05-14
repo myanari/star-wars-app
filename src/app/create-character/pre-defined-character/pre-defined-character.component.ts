@@ -38,5 +38,6 @@ export class PreDefinedCharacterComponent implements OnInit {
       (e) => {
         console.log(e);
       });
+    this.swService.userSubmitted = true;
   }
 }

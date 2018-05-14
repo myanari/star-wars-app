@@ -12,6 +12,7 @@ import { StarWarsService } from '../star-wars.service';
 export class ItemComponent implements OnInit {
   @Input() isFirst;
   @Input() char;
+  isFocused;
   swService: StarWarsService;
   isCustomImage;
   path = '';
@@ -37,8 +38,11 @@ export class ItemComponent implements OnInit {
     }
     this.isCustomImage = !this.path.startsWith('/assets/characters');
 
+    this.isFocused = this.isFirst && this.swService.userSubmitted;
+
     setTimeout(() => {
       this.isFirst = false;
+      this.isFocused = this.isFirst && this.swService.userSubmitted;
     }, 2000);
   }
 
