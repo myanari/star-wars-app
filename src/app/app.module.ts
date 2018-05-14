@@ -12,6 +12,7 @@ import { ListComponent } from './list/list.component';
 import { ItemComponent } from './item/item.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ExternalLinkHandlerDirective } from './external-link-handler.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FooterComponent } from './footer/footer.component';
     ListComponent,
     ItemComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ExternalLinkHandlerDirective
   ],
   imports: [
     BrowserModule,
