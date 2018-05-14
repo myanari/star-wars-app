@@ -40,7 +40,7 @@ export class UserDefinedCharacterComponent implements OnInit {
 
   ngOnInit() {
     this.sides = this.swService.getSides();
-    this.display = window.matchMedia("(max-width: 25rem)").matches ? 'Side' : 'Choose Side';
+    this.display = window.matchMedia('(max-width: 25rem)').matches ? 'Side' : 'Choose Side';
     this.fetchCharacters();
   }
 
@@ -70,9 +70,7 @@ export class UserDefinedCharacterComponent implements OnInit {
     if (submittedForm.invalid) { return; }
     const value = submittedForm.value;
     this.swService.addCharacter(value.name, value.side, value.image);
-    this.router.navigateByUrl('/characters').then(() => {
-        this.swService.userSubmitted.next();
-      },
+    this.router.navigateByUrl('/characters').then(() => {},
       (e) => {
         console.log(e);
       });

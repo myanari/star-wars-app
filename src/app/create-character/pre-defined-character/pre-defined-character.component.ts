@@ -34,9 +34,7 @@ export class PreDefinedCharacterComponent implements OnInit {
     const value = submittedForm.value;
     this.swService.addCharacter(value.name, value.side, `/assets/characters/${value.name}.svg`);
     this.router.navigateByUrl('/characters')
-      .then(() => {
-        this.swService.userSubmitted.next();
-      },
+      .then(() => {},
       (e) => {
         console.log(e);
       });
