@@ -3,14 +3,13 @@
   /*background-color: #37474F;*/
 /*}*/
 
-html {
+html, body {
   height: 100%;
-  box-sizing: border-box;
 }
 
 body {
   position: relative;
-  margin: 0;
-  padding-bottom: 6rem;
   min-height: 100%;
+  height: auto !important;
+  padding-bottom: 11.5rem;
 }
