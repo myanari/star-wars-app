@@ -1,6 +1,6 @@
 .first {
     box-shadow: 1px 8px 20px grey;
-    transition:  box-shadow .6s ease-in;
+    transition:  box-shadow .5s ease-in;
 }
 
 .list {

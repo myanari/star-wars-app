@@ -43,7 +43,7 @@ export class ItemComponent implements OnInit {
     setTimeout(() => {
       this.isFirst = false;
       this.isFocused = this.isFirst && this.swService.userSubmitted;
-    }, 2000);
+    }, 1500);
   }
 
   onAssign(side: string) {
