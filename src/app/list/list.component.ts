@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { StarWarsService } from '../star-wars.service';
-import { ItemComponent } from '../item/item.component';
 
 
 @Component({
@@ -11,6 +10,7 @@ import { ItemComponent } from '../item/item.component';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit, OnDestroy {
+  @ViewChild('card') item;
   characters = [];
   loadedSide = 'all';
   subscription;
@@ -35,6 +35,14 @@ export class ListComponent implements OnInit, OnDestroy {
       }
     );
   }
+
+  // ngAfterViewInit() {
+  //   let classList = this.item.nativeElement.classList;
+  //   classList.add('first');
+  //   setTimeout(() => {
+  //     classList.remove('first');
+  //   }, 1500);
+  // }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Injectable } from '@angular/core';
+import {Component, OnInit, Input, Injectable, AfterViewInit} from '@angular/core';
 
 import { StarWarsService } from '../star-wars.service';
 
@@ -9,7 +9,8 @@ import { StarWarsService } from '../star-wars.service';
 })
 
 @Injectable()
-export class ItemComponent implements OnInit {
+export class ItemComponent implements OnInit, AfterViewInit {
+  @Input() isFirst;
   @Input() char;
   swService: StarWarsService;
   isCustomImage;
@@ -35,6 +36,12 @@ export class ItemComponent implements OnInit {
       this.path = `/assets/characters/${this.char.name}.svg`;
     }
     this.isCustomImage = !this.path.startsWith('/assets/characters');
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.isFirst = false;
+    }, 2000);
   }
 
   onAssign(side: string) {

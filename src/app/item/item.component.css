@@ -73,12 +73,16 @@ img {
 }
 
 .card {
-  box-shadow: 0px 0px 0px grey;
   box-shadow: .1px .9px 3px grey;
   margin-bottom: 5px;
+  border-radius: 5px;
 }
 
-/* .first-card {
+.card.first {
   box-shadow: 1px 8px 20px grey;
-  transition:  box-shadow .5s ease-in;
-} */
+  transition: box-shadow .5s ease-in;
+}
+
+.card.fade {
+  transition: box-shadow 1s ease-in;
+}
