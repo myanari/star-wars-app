@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { LoggerService } from './logger.service';
 import { Subject } from 'rxjs/Subject';
 
+import * as _ from 'lodash';
+
 @Injectable()
 export class StarWarsService {
   userSubmitted;
@@ -43,9 +45,11 @@ export class StarWarsService {
     { name: 'tusken-raider', side: '' },
     { name: 'yoda', side: '' }
   ];
+  randomCharIndex = _.random(this.possibleCharacters.length);
+  randomChar = this.possibleCharacters.filter((el, i) => i === this.randomCharIndex)[0].name;
+  
   private displayedCharacters = [
-    { name: 'c3p0', side: '', image: '/assets/characters/c3p0.svg' },
-    { name: 'han-solo', side: '', image: '/assets/characters/han-solo.svg' }
+    { name: this.randomChar, side: '', image: `/assets/characters/${this.randomChar}.svg` }
   ];
 
   availableSides = [

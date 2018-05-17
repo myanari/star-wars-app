@@ -12,7 +12,7 @@ import { StarWarsService } from '../star-wars.service';
 export class ItemComponent implements OnInit {
   @Input() isFirst;
   @Input() char;
-  active;
+  activeSide;
   isFocused;
   swService: StarWarsService;
   isCustomImage;
@@ -25,6 +25,7 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.activeSide = this.char.side;
     this.name = this.char.name.split('-').join(' ');
 
     const names = this.name.split(' ');
@@ -49,7 +50,6 @@ export class ItemComponent implements OnInit {
 
   onAssign(side: string) {
     this.swService.onSideChosen({ name: this.char.name, side: side, image: this.char.image });
-    this.active = side;
-    console.log(this.active);
+    this.activeSide = this.char.side;
   }
 }
