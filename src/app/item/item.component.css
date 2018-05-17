@@ -17,17 +17,25 @@ button.dark-side:hover {
   color: #fff;
 }
 
+button.dark-side.active {
+  background-color: #F44336;
+  color: rgb(56, 56, 56);
+}
+
 button.light-side {
   border: 1px solid #2F67F8;
   color: #2F67F8;
 }
 
 button.light-side:hover {
-  /* background-color: #2196F3; */
   background-color: #2F67F8;
   color: #fff;
 }
 
+button.light-side.active {
+  background-color: #2F67F8;
+  color: rgb(56, 56, 56);
+}
 
 .card-footer-item {
   padding: .40rem;

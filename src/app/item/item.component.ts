@@ -12,6 +12,7 @@ import { StarWarsService } from '../star-wars.service';
 export class ItemComponent implements OnInit {
   @Input() isFirst;
   @Input() char;
+  active;
   isFocused;
   swService: StarWarsService;
   isCustomImage;
@@ -48,5 +49,7 @@ export class ItemComponent implements OnInit {
 
   onAssign(side: string) {
     this.swService.onSideChosen({ name: this.char.name, side: side, image: this.char.image });
+    this.active = side;
+    console.log(this.active);
   }
 }

@@ -13,10 +13,16 @@
     </div>
   </div>
   <footer class="card-footer">
-    <button (click)="onAssign('light')" class="card-footer-item button light-side">
+    <button
+      (click)="onAssign('light')"
+      class="card-footer-item button light-side"
+      [ngClass]="{active: active === 'light'}">
       <i class="fab fa-3x fa-rebel"></i>
     </button>
-    <button (click)="onAssign('dark')" class="card-footer-item button dark-side">
+    <button
+      (click)="onAssign('dark')"
+      class="card-footer-item button dark-side"
+      [ngClass]="{active: active === 'dark'}">
       <i class="fab fa-3x fa-empire"></i>
     </button>
   </footer>
