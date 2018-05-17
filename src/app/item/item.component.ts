@@ -18,7 +18,7 @@ export class ItemComponent implements OnInit {
   isCustomImage;
   path = '';
   name = '';
-  user = '';
+  user;
 
   constructor(swService: StarWarsService) {
     this.swService = swService;
@@ -26,25 +26,19 @@ export class ItemComponent implements OnInit {
 
   ngOnInit() {
     this.activeSide = this.char.side;
-    this.name = this.char.name.split('-').join(' ');
+    
+    this.user = this.swService.getUserName(this.name, this.char);
 
-    const names = this.name.split(' ');
-
-    if (names.length === 1 && names[0] !== 'bb8' && names[0] !== 'c3p0' && names[0] !== 'r2d2') {
-      names.push(Math.floor(Math.random() * 100).toString());
-    }
-    this.user = names.join('');
     this.path = this.char.image;
     if (this.char.image === undefined) {
       this.path = `/assets/characters/${this.char.name}.svg`;
     }
     this.isCustomImage = !this.path.startsWith('/assets/characters');
 
-    this.isFocused = this.isFirst && this.swService.userSubmitted;
+    this.isFocused = this.swService.focusEffect(this.isFocused, this.isFirst);
 
     setTimeout(() => {
-      this.isFirst = false;
-      this.isFocused = this.isFirst && this.swService.userSubmitted;
+      this.isFocused = false;
     }, 1500);
   }
 

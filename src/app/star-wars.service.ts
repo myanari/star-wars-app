@@ -91,4 +91,27 @@ export class StarWarsService {
     this.charactersChanged.next();
     this.logService.logChange(`Side of ${charInfo.name} changed! New side: ${charInfo.side}`);
   }
+
+  getUserName(name, char) {
+    name = char.name.split('-').join(' ');
+
+    const names = name.split(' ');
+
+    if (names.length === 1 && names[0] !== 'bb8' && names[0] !== 'c3p0' && names[0] !== 'r2d2') {
+      names.push(Math.floor(Math.random() * 100).toString());
+    }
+    return names.join('');
+  }
+
+  focusEffect(isFocused, isFirst) {
+    isFocused = isFirst && this.userSubmitted;
+
+    setTimeout(() => {
+      isFirst = false;
+      isFocused = isFirst && this.userSubmitted;
+    }, 1500);
+
+    this.userSubmitted = false;
+    return isFocused;
+  }
 }
