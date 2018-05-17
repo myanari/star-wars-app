@@ -13,6 +13,7 @@ import { ItemComponent } from './item/item.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HamburgerComponent } from './header/hamburger/hamburger.component';
+import { HamburgerMenu } from './header/hamburger-menu/hamburger-menu.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HamburgerComponent } from './header/hamburger/hamburger.component';
     ItemComponent,
     HeaderComponent,
     FooterComponent,
-    HamburgerComponent
+    HamburgerComponent,
+    HamburgerMenu
   ],
   imports: [
     BrowserModule,
