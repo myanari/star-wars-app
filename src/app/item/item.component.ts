@@ -29,6 +29,8 @@ export class ItemComponent implements OnInit {
     
     this.user = this.swService.getUserName(this.name, this.char);
 
+    this.name = this.char.name.split('-').join(' ');
+
     this.path = this.char.image;
     if (this.char.image === undefined) {
       this.path = `/assets/characters/${this.char.name}.svg`;
